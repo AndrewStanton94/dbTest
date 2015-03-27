@@ -1,15 +1,27 @@
 <?php
-    // echo "Hi";
-    // // Doesn't return this
+switch ($_SERVER['REQUEST_METHOD']) {
+    case "POST":					// Creation
+		$retValue = "prodId " . $_POST["prodId"] . "\n " .
+			" prodParent " . $_POST["prodParent"] . "\n " .
+			"prodCat " . $_POST["prodCat"] . "\n " .
+			"prodURL <a href=' " . $_POST["prodURL"] . "'>" .$_POST["prodURL"] .  "</a> \n " .
+			"prodCap " . $_POST["prodCap"] ;
+		echo nl2br ($retValue);		// \n to <br>
+		break;
 
-	// $sRequest = $_POST["prodId"];
-	// $sResponse = $sRequest . " :Your request has been seen by syam";
-	// echo $sResponse;
+    case "GET":
+    	echo "Get";
+		break;
 
-	$retValue = "prodId " . $_POST["prodId"] . "\n " .
-		" prodParent " . $_POST["prodParent"] . "\n " .
-		"prodCat " . $_POST["prodCat"] . "\n " .
-		"prodURL <a href=' " . $_POST["prodURL"] . "'>" .$_POST["prodURL"] .  "</a> \n " .
-		"prodCap " . $_POST["prodCap"] ;
-	echo nl2br ($retValue);
+	case "PUT":						// Update
+	    	echo "Put";
+			break;
+
+	case "DELETE":
+	    	echo "Delete";
+			break;
+
+	default:
+        echo "Error";	
+}
 ?>
