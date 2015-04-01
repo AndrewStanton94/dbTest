@@ -1,12 +1,26 @@
 <?php
+include "utils.php";
+$requestParameters = parseArgsList($_SERVER['REQUEST_URI']);
+var_dump($requestParameters);
+
 switch ($_SERVER['REQUEST_METHOD']) {
     case "POST":                    // Creation
-        $retValue = "prodId " . $_POST["prodId"] . "\n " .
-            "prodParent " . $_POST["prodParent"] . "\n " .
-            "prodCat " . $_POST["prodCat"] . "\n " .
-            "prodURL <a href=' " . $_POST["prodURL"] . "'>" .$_POST["prodURL"] .  "</a> \n " .
-            "prodCap " . $_POST["prodCap"] ;
-        echo nl2br ($retValue);     // \n to <br>
+        switch ($requestParameters[0]) {
+            case 'product':
+                $retValue = "prodId " . $_POST["prodId"] . "\n " .
+                    "prodParent " . $_POST["prodParent"] . "\n " .
+                    "prodCat " . $_POST["prodCat"] . "\n " .
+                    "prodURL <a href=' " . $_POST["prodURL"] . "'>" .$_POST["prodURL"] .  "</a> \n " .
+                    "prodCap " . $_POST["prodCap"] ;
+                echo nl2br ($retValue);     // \n to <br>
+                // Process formdata into a product using prepared statement
+                break;
+            
+            default:
+                echo "This data cannot be posted";
+                // Responder with negative feedback
+                break;
+        }
         break;
 
     case "GET":
@@ -14,12 +28,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case "PUT":                     // Update
-            echo "Put";
-            break;
+        echo "Put";
+        break;
 
     case "DELETE":
-            echo "Delete";
-            break;
+        echo "Delete";
+        break;
 
     default:
         echo "Error";   
