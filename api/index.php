@@ -1,7 +1,8 @@
 <?php
 include "utils.php";
+include "dbLib.php";
 $requestParameters = parseArgsList($_SERVER['REQUEST_URI']);
-var_dump($requestParameters);
+// var_dump($requestParameters);
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case "POST":                    // Creation
