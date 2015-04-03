@@ -21,12 +21,13 @@
 
             $db->exec("USE ".DBNAME); // MySQL-only
 
-            $query = $db->query('SELECT * FROM entries');
-            // One result
-            // $fetch = $query->fetch(PDO::FETCH_ASSOC);
-            // All results
-            $fetch = $query->fetchAll(PDO::FETCH_ASSOC);
-            print_r($fetch);
+            // $query = $db->query('SELECT * FROM entries');
+            // // One result
+            // // $fetch = $query->fetch(PDO::FETCH_ASSOC);
+            // // All results
+            // $fetch = $query->fetchAll(PDO::FETCH_ASSOC);
+            // print_r($fetch);
+            return $db;
         }
         catch(PDOException $e){
             echo "<strong>There was an error with the connection</strong><br>";
@@ -38,5 +39,34 @@
         }
     }
 
-    createConnection();
+    function fetchAll($db, $table)
+    {
+        $query = $db->query('SELECT * FROM ' . $table);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        print_r($result);
+    }
+
+    function insertProduct($db, $prodId, $prodParent, $prodCat, $prodURL, $prodCap)
+    {
+        $query = $db->prepare('INSERT INTO entries VALUES(:prodId, :prodParent, :prodCat, :prodURL, :prodCap)');
+        $array = array(
+            'prodId'     => $prodId,
+            'prodParent' => $prodParent,
+            'prodCat'    => $prodCat,
+            'prodURL'    => $prodURL,
+            'prodCap'    => $prodCap
+        );
+ 
+        $query->execute($array);
+        // print_r($query);
+    }
+
+    function deleteProduct($db, $prodId)
+    {
+        $query = $db->prepare('DELETE FROM entries WHERE id = :prodId');
+        $array = array('prodId' => $prodId);
+ 
+        $query->execute($array);
+        // print_r($query);
+    }
 ?>
