@@ -1,6 +1,11 @@
 <?php
-include "utils.php";
-include "dbLib.php";
+/*
+    Router, all requests sent to api directory forwarded here.
+    URLs of type api/data/args converted to array.
+    Determine method then data. Call functions in dbLib to process commands
+*/
+include_once "utils.php";
+include_once "dbLib.php";
 $requestParameters = parseArgsList($_SERVER['REQUEST_URI']);
 // var_dump($requestParameters);
 
@@ -61,4 +66,6 @@ switch($_SERVER['REQUEST_METHOD']) {
         echo "<strong>Error: unexpected method. Can handle <code>POST</code>, <code>GET</code>, <code>DELETE</code></strong>";   
         http_response_code(405);     //'Method Not Allowed', 
 }
+
+$db = null;
 ?>

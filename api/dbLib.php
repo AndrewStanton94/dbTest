@@ -1,4 +1,17 @@
 <?php
+
+/*
+    Functions for database interactions.
+    Using prepared statements wherever possible
+*/
+
+/*
+    Config info. const for protection.
+    Move to config file later.
+
+    Add code to to create db and tables if required.
+*/
+
     const DBSERVER = "127.0.0.1"; // SQL DB server address
     const DBNAME = "demo";    // Name of the database to use
     const DBUSER = "root";  // User with read/write DB permission
