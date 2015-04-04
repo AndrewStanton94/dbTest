@@ -13,11 +13,11 @@ practice for database aspects of coursework
 
 + PHP
     * Responder taking values from $_POST[] & returning them to user
+    * Record data to databse (Prepared statements)
 
 ## Todo
-+ Record data to databse (Prepared statements)
-+ Get requests to get data in database
 + Handle args, modifed URL to get different data. E.g. GET api/ : all data; GET api/criteria : search items matching criteria. (htaccess? review linbeta)
++ Get requests to get data in database
 + Other needed HTTP requests? 
     * HEAD
     * PUT
