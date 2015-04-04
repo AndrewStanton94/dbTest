@@ -52,14 +52,13 @@ switch($_SERVER['REQUEST_METHOD']) {
             default:
                 echo "This data cannot be deleted";
                 // Responder with negative feedback
-                http_response_code(400);
+                http_response_code(400);     //'Bad Request', 
                 break;
         }
         break;
 
     default:
         echo "<strong>Error: unexpected method. Can handle <code>POST</code>, <code>GET</code>, <code>DELETE</code></strong>";   
-        // 405
-        http_response_code(405);
+        http_response_code(405);     //'Method Not Allowed', 
 }
 ?>
