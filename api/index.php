@@ -19,7 +19,7 @@ switch($_SERVER['REQUEST_METHOD']) {
         switch($requestParameters[0]) {
             case 'product':
                 insertProduct($db, $_POST["prodId"], $_POST["prodParent"], $_POST["prodCat"], $_POST["prodURL"], $_POST["prodCap"]);
-                fetchAll($db, "entries");
+                fetchAll($db, "product");
 
                 // $retValue = "prodId " . $_POST["prodId"] . "\n " .
                 //     "prodParent " . $_POST["prodParent"] . "\n " .
@@ -39,7 +39,7 @@ switch($_SERVER['REQUEST_METHOD']) {
 
     case "GET":
         echo "<strong><code>Get</code></strong>: <br>";
-        fetchAll($db, "entries");
+        fetchAll($db, "product");
         break;
 
     case "PUT":                     // Update
@@ -51,7 +51,7 @@ switch($_SERVER['REQUEST_METHOD']) {
         switch($requestParameters[0]) {
             case 'product':
                 deleteProduct($db, "8");
-                fetchAll($db, "entries");
+                fetchAll($db, "product");
                 break;
             
             default:
