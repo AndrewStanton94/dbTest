@@ -81,11 +81,11 @@
         print_r($result);
     }
 
-    function insertProduct($db, $prodId, $prodName, $prodCategory, $prodDescription, $prodPrice, $prodStockLevel, $prodManufacturer)
+    function insertProduct($db, $prodName, $prodCategory, $prodDescription, $prodPrice, $prodStockLevel, $prodManufacturer)
     {
         $query = $db->prepare('INSERT INTO product VALUES(:prodId, :prodName, :prodCategory, :prodDescription, :prodPrice, :prodStockLevel, :prodManufacturer)');
         $array = array(
-            'prodId'           => $prodId,
+            'prodId'           => 'PlaceholderID',
             'prodName'         => $prodName,
             'prodCategory'     => $prodCategory,
             'prodDescription'  => $prodDescription,

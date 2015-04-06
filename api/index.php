@@ -18,7 +18,7 @@ switch($_SERVER['REQUEST_METHOD']) {
         echo "<strong><code>Post</code></strong>: <br>";
         switch($requestParameters[0]) {
             case 'product':
-                insertProduct($db, $_POST["$prodId"], $_POST["$prodName"], $_POST["$prodCategory"], $_POST["$prodDescription"], $_POST["$prodPrice"], $_POST["$prodStockLevel"], $_POST["$prodManufacturer"]);
+                insertProduct($db, $_POST["prodName"], $_POST["prodCategory"], $_POST["prodDescription"], $_POST["prodPrice"], $_POST["prodStockLevel"], $_POST["prodManufacturer"]);
                 fetchAll($db, "product");
 
                 // $retValue = "prodId " . $_POST["prodId"] . "\n " .
