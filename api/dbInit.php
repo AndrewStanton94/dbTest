@@ -22,7 +22,7 @@
 
             case 1064:
             case 1146:
-                echo "<p><strong>table not found</strong></p>";
+                echo "<p><strong>table not found. Making it @dbInit:25</strong></p>";
                  $rows[] = $db->query(DBINIT);
                 break;
 

@@ -68,9 +68,11 @@
     function fetchAll($db, $table)
     {
         try{
-            $query = $db->query('SHOW TABLES LIKE  ' . $table);
+            $query = $db->query('SHOW TABLES LIKE "' . $table . '"');
         }
         catch(PDOException $e){
+            // echo "RESULT of SHOW TABLES LIKE $table<br>";
+            // var_dump($query);
             echo "DEALING with it";
             prepareDatabase($db);
         }

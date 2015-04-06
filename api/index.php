@@ -18,7 +18,7 @@ switch($_SERVER['REQUEST_METHOD']) {
         echo "<strong><code>Post</code></strong>: <br>";
         switch($requestParameters[0]) {
             case 'product':
-                insertProduct($db, $_POST["prodId"], $_POST["prodParent"], $_POST["prodCat"], $_POST["prodURL"], $_POST["prodCap"]);
+                insertProduct($db, $_POST["$prodId"], $_POST["$prodName"], $_POST["$prodCategory"], $_POST["$prodDescription"], $_POST["$prodPrice"], $_POST["$prodStockLevel"], $_POST["$prodManufacturer"]);
                 fetchAll($db, "product");
 
                 // $retValue = "prodId " . $_POST["prodId"] . "\n " .
@@ -50,9 +50,12 @@ switch($_SERVER['REQUEST_METHOD']) {
         echo "<strong><code>Delete</code></strong>: <br>";
         switch($requestParameters[0]) {
             case 'product':
-                deleteProduct($db, "8");
-                fetchAll($db, "product");
-                break;
+                if (count($requestParameters) == 2) {
+                    deleteProduct($db, $requestParameters[1]);
+                    fetchAll($db, "product");
+                    break;
+                }
+                // Else fall through to default
             
             default:
                 echo "This data cannot be deleted";
