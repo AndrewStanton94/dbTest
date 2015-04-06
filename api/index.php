@@ -13,6 +13,7 @@ if(!isset($db)) {
     $db = createConnection();
 }
 
+header('Content-Type: text/json');
 switch($_SERVER['REQUEST_METHOD']) {
     case "POST":                    // Creation
         echo "<strong><code>Post</code></strong>: <br>";
@@ -38,7 +39,7 @@ switch($_SERVER['REQUEST_METHOD']) {
         break;
 
     case "GET":
-        echo "<strong><code>Get</code></strong>: <br>";
+        // echo "<strong><code>Get</code></strong>: <br>";
         fetchAll($db, "product");
         break;
 

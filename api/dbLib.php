@@ -41,7 +41,7 @@
 
         try {
             $db = new PDO($dsn, DBUSER, DBPW, $options); 
-            echo "<strong>Connection established</strong><br>";
+            // echo "<strong>Connection established</strong><br>";
 
             $db->exec("USE ".DBNAME); // MySQL-only
 
@@ -78,7 +78,8 @@
         }
         $query = $db->query('SELECT * FROM ' . $table);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        print_r($result);
+        // print_r($result);
+        echo json_encode($result);
     }
 
     function insertProduct($db, $prodName, $prodCategory, $prodDescription, $prodPrice, $prodStockLevel, $prodManufacturer)
