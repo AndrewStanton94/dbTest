@@ -13,7 +13,7 @@ if(!isset($db)) {
     $db = createConnection();
 }
 
-header('Content-Type: text/json');
+// header('Content-Type: text/json');
 switch($_SERVER['REQUEST_METHOD']) {
     case "POST":                    // Creation
         echo "<strong><code>Post</code></strong>: <br>";
