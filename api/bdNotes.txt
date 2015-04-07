@@ -1,0 +1,47 @@
+DISCONTINUED???
+
+
+prodId
+prodName
+prodCategory
+prodDescription
+prodPrice
+prodStockLevel
+prodManufacturer
+
+
+:prodId, :prodName, :prodCategory, :prodDescription, :prodPrice, :prodStockLevel, :prodManufacturer
+
+$prodId
+$prodName
+$prodCategory
+$prodDescription
+$prodPrice
+$prodStockLevel
+$prodManufacturer
+
+$_POST["$prodId"], $_POST["$prodName"], $_POST["$prodCategory"], $_POST["$prodDescription"], $_POST["$prodPrice"], $_POST["$prodStockLevel"], $_POST["$prodManufacturer"]
+
+$prodId, $prodName, $prodCategory, $prodDescription, $prodPrice, $prodStockLevel, $prodManufacturer
+
+
+
+prodId => $prodId,
+prodName => $prodName,
+prodCategory => $prodCategory,
+prodDescription => $prodDescription,
+prodPrice => $prodPrice,
+prodStockLevel => $prodStockLevel,
+prodManufacturer => $prodManufacturer
+
+
+
+CREATE TABLE product(
+    prodId bigint PRIMARY KEY not null auto_increment,
+    prodName VARCHAR(50) not null,
+    prodCategory VARCHAR(50),
+    prodDescription VARCHAR(500),
+    prodPrice FLOAT not null,
+    prodStockLevel INT not null,
+    prodManufacturer VARCHAR(50),
+    );
