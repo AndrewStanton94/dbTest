@@ -16,7 +16,7 @@ if(!isset($db)) {
 // header('Content-Type: text/json');
 switch($_SERVER['REQUEST_METHOD']) {
     case "POST":                    // Creation
-        echo "<strong><code>Post</code></strong>: <br>";
+        // echo "<strong><code>Post</code></strong>: <br>";
         switch($requestParameters[0]) {
             case 'product':
                 insertProduct($db, $_POST["prodName"], $_POST["prodCategory"], $_POST["prodDescription"], $_POST["prodPrice"], $_POST["prodStockLevel"], $_POST["prodManufacturer"]);
@@ -45,10 +45,11 @@ switch($_SERVER['REQUEST_METHOD']) {
 
     case "PUT":                     // Update
         echo "<strong><code>Put</code></strong>: <br>";
+        print_r($requestParameters);
         break;
 
     case "DELETE":
-        echo "<strong><code>Delete</code></strong>: <br>";
+        // echo "<strong><code>Delete</code></strong>: <br>";
         switch($requestParameters[0]) {
             case 'product':
                 if (count($requestParameters) == 2) {
