@@ -26,3 +26,11 @@ practice for database aspects of coursework
     (http://www.restapitutorial.com/lessons/httpmethods.html, http://www.tutorialspoint.com/http/http_requests.htm)
     
 + Restructure to get data required in coursework
+
+### Code dump
+// Build full URL and display
+$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+echo $url;
+
+Show everything after the host. path & args
+var_dump($_SERVER['REQUEST_URI']);

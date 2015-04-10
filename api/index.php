@@ -6,8 +6,7 @@
 */
 include_once "utils.php";
 include_once "dbLib.php";
-$requestParameters = parseArgsList($_SERVER['REQUEST_URI']);
-// var_dump($requestParameters);
+$requestParameters = parseArgsList();
 
 if(!isset($db)) {
     $db = createConnection();
