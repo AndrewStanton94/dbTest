@@ -8,13 +8,14 @@
 </head>
 <body>
 
-    <form id="orderForm">
+    <form id="orderForm" enctype="multipart/form-data">
         <input type="text" value="fffjdak" name = "prodName" placeholder = "prodName">
         <input type="text" value="fffjdak" name = "prodCategory" placeholder = "prodCategory">
         <input type="text" value="fffjdak" name = "prodDescription" placeholder = "prodDescription">
         <input type="number" value="fffjdak" name = "prodPrice" placeholder = "prodPrice" step=1 min=1>
         <input type="number" value="fffjdak" name = "prodStockLevel" placeholder = "prodStockLevel" step=1>
         <input type="text" value="fffjdak" name = "prodManufacturer" placeholder = "prodManufacturer">
+        <input type="file" name="productImage" />
         <input type="submit" name="Add to database">
     </form>
 

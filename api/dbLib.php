@@ -25,7 +25,8 @@
     prodDescription VARCHAR(500),
     prodPrice FLOAT not null,
     prodStockLevel INT not null,
-    prodManufacturer VARCHAR(50)
+    prodManufacturer VARCHAR(50),
+    imageName VARCHAR(50)
     );";
 
     function createConnection(){
@@ -84,7 +85,12 @@
 
     function insertProduct($db, $prodName, $prodCategory, $prodDescription, $prodPrice, $prodStockLevel, $prodManufacturer)
     {
-        $query = $db->prepare('INSERT INTO product VALUES(:prodId, :prodName, :prodCategory, :prodDescription, :prodPrice, :prodStockLevel, :prodManufacturer)');
+        $query = $db->prepare('INSERT INTO product VALUES(:prodId, :prodName, :prodCategory, :prodDescription, :prodPrice, :prodStockLevel, :prodManufacturer, :imageName)');
+        // $imageName = saveImage();   // Filename or False
+        // echo $imageName;
+        // $imageName = $imageName ? $imageName : null;
+        $si = saveImage();
+        // var_dump($si);
         $array = array(
             'prodId'           => 'PlaceholderID',
             'prodName'         => $prodName,
@@ -92,7 +98,8 @@
             'prodDescription'  => $prodDescription,
             'prodPrice'        => $prodPrice,
             'prodStockLevel'   => $prodStockLevel,
-            'prodManufacturer' => $prodManufacturer
+            'prodManufacturer' => $prodManufacturer,
+            'imageName'=> $si
         );
  
         $query->execute($array);

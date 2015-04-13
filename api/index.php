@@ -16,20 +16,11 @@ if(!isset($db)) {
 switch($_SERVER['REQUEST_METHOD']) {
     case "POST":                    // Creation
         // echo "<strong><code>Post</code></strong>: <br>";
-        switch($requestParameters[0]) {
+        switch($requestParameters["path"][0]) {
             case 'product':
                 insertProduct($db, $_POST["prodName"], $_POST["prodCategory"], $_POST["prodDescription"], $_POST["prodPrice"], $_POST["prodStockLevel"], $_POST["prodManufacturer"]);
-                fetchAll($db, "product");
+                // echo "May have saved the data index.php @ post/product";
 
-                // $retValue = "prodId " . $_POST["prodId"] . "\n " .
-                //     "prodParent " . $_POST["prodParent"] . "\n " .
-                //     "prodCat " . $_POST["prodCat"] . "\n " .
-                //     "prodURL <a href=' " . $_POST["prodURL"] . "'>" .$_POST["prodURL"] .  "</a> \n " .
-                //     "prodCap " . $_POST["prodCap"] ;
-                // echo nl2br ($retValue);     // \n to <br>
-                // // Process formdata into a product using prepared statement
-                break;
-            
             default:
                 echo "This data cannot be posted";
                 // Responder with negative feedback
@@ -49,11 +40,10 @@ switch($_SERVER['REQUEST_METHOD']) {
 
     case "DELETE":
         // echo "<strong><code>Delete</code></strong>: <br>";
-        switch($requestParameters[0]) {
+        switch($requestParameters["path"][0]) {
             case 'product':
-                if (count($requestParameters) == 2) {
-                    deleteProduct($db, $requestParameters[1]);
-                    fetchAll($db, "product");
+                if (count($requestParameters["path"]) == 2) {
+                    deleteProduct($db, $requestParameters["path"][1]);
                     break;
                 }
                 // Else fall through to default

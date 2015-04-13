@@ -16,6 +16,10 @@
     });
 </script>
 
+<?php
+echo dirname(__FILE__);
+?>
+
 <form id="form" enctype="multipart/form-data">  <!-- enctype set to this for all forms with input[file] -->
     <input accesskey="1" type="file" name="image" />
     <input accesskey="2" type="submit"/>
