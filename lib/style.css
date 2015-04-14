@@ -17,6 +17,11 @@ input, select {
     margin-left: 13em;
 }
 
+input[readonly = "readonly"]{
+    /*Only readonly used for updating the product, kept in form for convenience but no need for end-users to see it.*/
+    display: none;
+}
+
 label {
     display: block;
     float: left;

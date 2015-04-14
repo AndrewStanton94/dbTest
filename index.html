@@ -65,24 +65,25 @@
     </form>
 
     <form id="modifyForm" enctype="multipart/form-data">
+            <input type="text" required readonly="readonly" value="fffjdak" name = "prodId">
 
             <label for="prodName">Product Name</label>
-            <input type="text" autofocus required value="fffjdak" name = "prodName" placeholder = "prodName">
+            <input type="text" autofocus required name = "prodName">
 
             <label for="productDescription">Product Description</label>
-            <input type="text" required value="fffjdak" name = "prodDescription" placeholder = "prodDescription">
+            <input type="text" required name = "prodDescription">
 
             <label for="prodPrice">Product Price</label>
-            <input type="number" required value="fffjdak" name = "prodPrice" placeholder = "prodPrice" min=1>
+            <input type="number" required name = "prodPrice" min=1>
 
             <label for="prodStockLevel">Current Stock Level</label>
-            <input type="number" required value="fffjdak" name = "prodStockLevel" placeholder = "prodStockLevel" step=1>
+            <input type="number" required name = "prodStockLevel" step=1>
 
         <label for="prodCategory">Product Category</label>
-        <input type="text" value="fffjdak" name = "prodCategory" placeholder = "prodCategory">
+        <input type="text" name = "prodCategory">
 
         <label for="productManufacturer">Product Manufacturer</label>
-        <input type="text" value="fffjdak" name = "prodManufacturer" placeholder = "prodManufacturer">
+        <input type="text" name = "prodManufacturer">
 
         <label for="productImage">Product Image</label>
         <input type="file" name="productImage" />
