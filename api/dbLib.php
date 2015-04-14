@@ -45,13 +45,6 @@
             // echo "<strong>Connection established</strong><br>";
 
             $db->exec("USE ".DBNAME); // MySQL-only
-
-            // $query = $db->query('SELECT * FROM product');
-            // // One result
-            // // $fetch = $query->fetch(PDO::FETCH_ASSOC);
-            // // All results
-            // $fetch = $query->fetchAll(PDO::FETCH_ASSOC);
-            // print_r($fetch);
         }
         catch(PDOException $e){
             echo "<strong>There was an error with the connection</strong><br>";
@@ -69,16 +62,17 @@
     function fetchAll($db, $table)
     {
         try{
-            $query = $db->query('SHOW TABLES LIKE "' . $table . '"');
+            $query = $db->query('SHOW TABLES LIKE "' . $table . '"');   // Have we got connection to db
+            $query = $db->query('SELECT * FROM ' . $table);
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);     // Try query. Fails if table not exist
         }
         catch(PDOException $e){
             // echo "RESULT of SHOW TABLES LIKE $table<br>";
             // var_dump($query);
-            echo "DEALING with it";
+            echo "Error while fetching data. DEALING with it";
             prepareDatabase($db);
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);     // Retry query. Fails if table not exist
         }
-        $query = $db->query('SELECT * FROM ' . $table);
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
         // print_r($result);
         echo json_encode($result);
     }
