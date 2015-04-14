@@ -1,14 +1,23 @@
 * {
     /*background-color: #f00;*/
     margin: 0;
+    font-family: sans-serif;
 }
 
 form {
     /*border-color: #f00;*/
     border: 1px solid #f00;
     margin: 1em;
+    padding: 0.5em;
+    background-color: #eee;
 }
 
-input{
+input, select {
     display: block;
+    margin-left: 13em;
+}
+
+label {
+    display: block;
+    float: left;
 }
