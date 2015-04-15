@@ -1,7 +1,7 @@
 <?php
 	$pageTitle = "Stock control";
 	$pathToLib = "../lib/";
-	$jsToInclude = ['ajax', 'src', 'cms'];
+	$jsToInclude = ['ajax', 'cms', 'src'];
 	include($pathToLib . "preamble.php");
 ?>
 
