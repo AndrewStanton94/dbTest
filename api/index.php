@@ -16,10 +16,19 @@ if(!isset($db)) {
 switch($_SERVER['REQUEST_METHOD']) {
     case "POST":                    // Creation
         // echo "<strong><code>Post</code></strong>: <br>";
+        // print_r($requestParameters);
         switch($requestParameters["path"][0]) {
             case 'product':
-                insertProduct($db, $_POST["prodName"], $_POST["prodCategory"], $_POST["prodDescription"], $_POST["prodPrice"], $_POST["prodStockLevel"], $_POST["prodManufacturer"]);
+                switch ($requestParameters['path'][1]) {
+                    case 'modify':
+                        editProduct($db);
+                        return;;
+                    
+                    default:
+                        insertProduct($db);
+                        return;;
                 // echo "May have saved the data index.php @ post/product";
+                }
 
             default:
                 echo "This data cannot be posted";
@@ -34,7 +43,7 @@ switch($_SERVER['REQUEST_METHOD']) {
         break;
 
     case "PUT":                     // Update
-        echo "<strong><code>Put</code></strong>: <br>";
+        // echo "<strong><code>Put</code></strong>: <br>";
         print_r($requestParameters);
         break;
 

@@ -12,7 +12,7 @@ form {
     background-color: #eee;
 }
 
-input, select {
+input, select, textarea {
     display: block;
     margin-left: 13em;
 }

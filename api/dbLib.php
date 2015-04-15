@@ -57,10 +57,9 @@
             prepareDatabase($db);
         }
         return $db;
-    }
+    };
 
-    function fetchAll($db, $table)
-    {
+    function fetchAll($db, $table){
         try{
             $query = $db->query('SHOW TABLES LIKE "' . $table . '"');   // Have we got connection to db
             $query = $db->query('SELECT * FROM ' . $table);
@@ -75,10 +74,9 @@
         }
         // print_r($result);
         echo json_encode($result);
-    }
+    };
 
-    function insertProduct($db, $prodName, $prodCategory, $prodDescription, $prodPrice, $prodStockLevel, $prodManufacturer)
-    {
+    function insertProduct($db){
         $query = $db->prepare('INSERT INTO product VALUES(:prodId, :prodName, :prodCategory, :prodDescription, :prodPrice, :prodStockLevel, :prodManufacturer, :imageName)');
         // $imageName = saveImage();   // Filename or False
         // echo $imageName;
@@ -86,19 +84,20 @@
         $si = saveImage();
         // var_dump($si);
         $array = array(
-            'prodId'           => 'PlaceholderID',
-            'prodName'         => $prodName,
-            'prodCategory'     => $prodCategory,
-            'prodDescription'  => $prodDescription,
-            'prodPrice'        => $prodPrice,
-            'prodStockLevel'   => $prodStockLevel,
-            'prodManufacturer' => $prodManufacturer,
-            'imageName'=> $si
-        );
+            'prodId'           => $_POST["prodId"],
+            'prodName'         => $_POST["prodName"],
+            'prodCategory'     => $_POST["prodCategory"],
+            'prodDescription'  => $_POST["prodDescription"],
+            'prodPrice'        => $_POST["prodPrice"],
+            'prodStockLevel'   => $_POST["prodStockLevel"],
+            'prodManufacturer' => $_POST["prodManufacturer"],
+            'imageName'        => $si 
+            );
  
-        $query->execute($array);
+        $result = $query->execute($array);
+        echo json_encode($result);
         // print_r($query);
-    }
+    };
 
     function deleteProduct($db, $prodId)
     {
@@ -107,5 +106,23 @@
  
         $query->execute($array);
         // print_r($query);
+    };
+
+    function editProduct($db){
+        $query = $db->prepare('UPDATE product
+                                SET prodName = :prodName, prodCategory = :prodCategory, prodDescription = :prodDescription, prodPrice = :prodPrice, prodStockLevel = :prodStockLevel, prodManufacturer = :prodManufacturer
+                                WHERE prodId = :prodId');
+        $array = array(
+            'prodId'           => $_POST["prodId"],
+            'prodName'         => $_POST["prodName"],
+            'prodCategory'     => $_POST["prodCategory"],
+            'prodDescription'  => $_POST["prodDescription"],
+            'prodPrice'        => $_POST["prodPrice"],
+            'prodStockLevel'   => $_POST["prodStockLevel"],
+            'prodManufacturer' => $_POST["prodManufacturer"]
+            // 'imageName'=> $si 
+            );
+
+        $query->execute($array);
     }
 ?>
