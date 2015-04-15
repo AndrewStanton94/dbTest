@@ -1,7 +1,7 @@
 <?php
 	$pageTitle = "Stock control";
 	$pathToLib = "../lib/";
-	$jsToInclude = ['ajax', 'cms', 'src'];
+	$jsToInclude = ['ajax', 'cms', 'global'];
 	include($pathToLib . "preamble.php");
 ?>
 
@@ -18,7 +18,7 @@
             <input type="number" required value="fffjdak" name = "prodPrice" placeholder = "prodPrice" min=1>
 
             <label for="prodStockLevel">Current Stock Level</label>
-            <input type="number" required value="fffjdak" name = "prodStockLevel" placeholder = "prodStockLevel" step=1>
+            <input type="number" required value="fffjdak" name = "prodStockLevel" placeholder = "prodStockLevel" step=1 min=0>
 
         <label for="prodCategory">Product Category</label>
         <input type="text" value="fffjdak" name = "prodCategory" placeholder = "prodCategory">
@@ -73,7 +73,7 @@
             <input type="number" required name = "prodPrice" min=1>
 
             <label for="prodStockLevel">Current Stock Level</label>
-            <input type="number" required name = "prodStockLevel" step=1>
+            <input type="number" required name = "prodStockLevel" step=1 min=0>
 
         <label for="prodCategory">Product Category</label>
         <input type="text" name = "prodCategory">
