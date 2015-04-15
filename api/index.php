@@ -22,11 +22,11 @@ switch($_SERVER['REQUEST_METHOD']) {
                 switch ($requestParameters['path'][1]) {
                     case 'modify':
                         editProduct($db);
-                        return;;
+                        return;
                     
                     default:
                         insertProduct($db);
-                        return;;
+                        return;
                 // echo "May have saved the data index.php @ post/product";
                 }
 
