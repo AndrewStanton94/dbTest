@@ -26,3 +26,41 @@ label {
     display: block;
     float: left;
 }
+
+section {
+    display: inline-block;
+    vertical-align: top;
+}
+
+section#productList{
+    display: inline-block;
+    vertical-align: top;
+    width: 60%;
+    background-color: blue;
+    min-height: 5em;
+}
+
+#customerLists{
+    position: fixed;
+    float: right;
+    width: 39%;
+    background-color: yellow;
+    min-height: 5em;
+}
+
+section.product{
+    display: inline-block;
+    vertical-align: top;
+    background-color: red;
+    margin: 1em;
+    padding: 0.5em;
+}
+
+.product input{
+    display: inline;
+    margin-left: 0;
+}
+
+.product input[type="number"]{
+    width: 2em;
+}
