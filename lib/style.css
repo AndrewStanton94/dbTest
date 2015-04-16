@@ -54,6 +54,10 @@ section#productList{
     min-height: 5em;
 }
 
+#customerLists img {
+    display: none;
+}
+
 section.product{
     display: inline-block;
     vertical-align: top;
