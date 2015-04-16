@@ -30,6 +30,12 @@ label {
 section {
     display: inline-block;
     vertical-align: top;
+    /*max-width: 30em;*/
+    /*overflow: hidden;*/
+}
+
+section img {
+    max-width: 20em;
 }
 
 section#productList{
@@ -42,7 +48,7 @@ section#productList{
 
 #customerLists{
     position: fixed;
-    float: right;
+    /*float: right;*/
     width: 39%;
     background-color: yellow;
     min-height: 5em;
