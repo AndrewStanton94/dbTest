@@ -16,7 +16,7 @@
     </section>
 </section>
 
-<section id=customerLists>
+<section id="customerLists">
 <h1>List of stuff</h1>
 </section>
 
