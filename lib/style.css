@@ -58,6 +58,10 @@ section#productList{
     display: none;
 }
 
+#productList p#quantity{
+    display: none;
+}
+
 section.product{
     display: inline-block;
     vertical-align: top;
