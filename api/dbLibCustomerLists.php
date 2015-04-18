@@ -1,45 +1,51 @@
 <?php
     function insertList($db){
-        $lists = json_decode($_POST["customerLists"], true);    // true for associative array, not stdObject
-        foreach ($lists as $listName => $list) {
-            // var_dump($list);
-            // echo('<br>');
-            processList($db, $listName, $list);
-        }
-
-        // print_r($out);
-
-        // $out = json_decode($_POST["customerLists"]);
-        // echo $_POST['customerLists'];
-    };
-
-    function processList($db, $listName, $list){
         $query = $db->prepare('INSERT INTO customerLists VALUES(:customerId, :list, :prodId, :quantity)');
-        echo "<br>processing list $listName <br>";
-        foreach ($list as $product) {   // still { product: order}
-            // var_dump($product['product']);
-            echo $product['product']['prodName'];
-            echo $product['quantity'];
-            
-            $array = array(
-                'customerId' => 0,
-                'list'       => $listName,
-                'prodId'     => $product['product']['prodId'],
-                'quantity'   => $product['quantity']
-            );
-     
-            $result = $query->execute($array);
-            echo json_encode($result);
+        $lists = json_decode($_POST["customerLists"], true);    // true => associative array, not stdObject
+
+        if (!isset($lists)){
+            echo "Nothing in list";
+            return;
+        }
+
+        try {
+            foreach ($lists as $listName => $list){ //foreach customerList
+                // var_dump($list);
+                // echo('<br>');
+                echo "<br>processing list $listName <br>";
+                foreach ($list as $product) {   // foreach {product: quantity}
+                    // var_dump($product['product']);
+                    // echo $product['product']['prodName'];
+                    // echo $product['quantity'];
+                    
+                    $array = array(
+                        'customerId' => 0,
+                        'list'       => $listName,
+                        'prodId'     => $product['product']['prodId'],
+                        'quantity'   => $product['quantity']
+                    );
+             
+                    $result = $query->execute($array);
+                    // echo json_encode($result);
+                }
+            }
+        }
+        catch (Exception $e) {
+            echo $e;
         }
     };
 
-    // function deleteList($db, $prodId)
-    // {
-    //     $query = $db->prepare('DELETE FROM customerLists WHERE prodId = :prodId');
-    //     $array = array('prodId' => $prodId);
- 
-    //     $query->execute($array);
-    // };
+    function deleteList($db, $prodId){
+        if ($prodId == '*'){
+            $db->query("DELETE FROM customerLists");
+        }
+        else{
+            $query = $db->prepare('DELETE FROM customerLists WHERE prodId = :prodId');
+            $array = array('prodId' => $prodId);
+     
+            $query->execute($array);
+        }
+    };
 
     // function editList($db){
     //     $query = $db->prepare('UPDATE customerLists

@@ -44,7 +44,21 @@ switch($_SERVER['REQUEST_METHOD']) {
 
     case "GET":
         // echo "<strong><code>Get</code></strong>: <br>";
-        fetchAll($db, "product");
+        switch($requestParameters["path"][0]) {
+            case 'product':
+                fetchAll($db, "product");
+                break;
+
+            case 'customerList':
+                fetchAll($db, "customerLists");
+                break;
+
+            default:
+                echo "This data cannot be fetched. Was given uri: ";
+               var_dump($_SERVER['REQUEST_URI']); 
+                // Responder with negative feedback
+                break; 
+        }
         break;
 
     case "PUT":                     // Update
@@ -56,14 +70,16 @@ switch($_SERVER['REQUEST_METHOD']) {
         // echo "<strong><code>Delete</code></strong>: <br>";
         switch($requestParameters["path"][0]) {
             case 'product':
-                if (count($requestParameters["path"]) == 2) {
+                if (count($requestParameters["path"]) == 2){
                     deleteProduct($db, $requestParameters["path"][1]);
-                    break;
+                    return;
                 }
 
             case 'customerList':
-                insertList($db);
-                break;
+                if (count($requestParameters["path"]) == 2){
+                    deleteList($db, $requestParameters["path"][1]);
+                    return;
+                }
             
             default:
                 echo "This data cannot be deleted";
