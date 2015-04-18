@@ -6,6 +6,7 @@
 */
 include_once "utils.php";
 include_once "dbLib.php";
+include_once "dbLibCustomerLists.php";
 $requestParameters = parseArgsList();
 
 if(!isset($db)) {
@@ -29,9 +30,13 @@ switch($_SERVER['REQUEST_METHOD']) {
                         return;
                 // echo "May have saved the data index.php @ post/product";
                 }
+            case 'customerList':
+                insertList($db);
+                break;
 
             default:
-                echo "This data cannot be posted";
+                echo "This data cannot be posted. Was given uri: ";
+               var_dump($_SERVER['REQUEST_URI']); 
                 // Responder with negative feedback
                 break;
         }
@@ -55,7 +60,10 @@ switch($_SERVER['REQUEST_METHOD']) {
                     deleteProduct($db, $requestParameters["path"][1]);
                     break;
                 }
-                // Else fall through to default
+
+            case 'customerList':
+                insertList($db);
+                break;
             
             default:
                 echo "This data cannot be deleted";

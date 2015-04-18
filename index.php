@@ -20,6 +20,10 @@
 <h1>List of stuff</h1>
 </section>
 
+<div id="callbackDiv">
+    
+</div>
+
 <?php
     include($pathToLib . "footer.php");
 ?>

@@ -1,68 +1,65 @@
 <?php
-	function fetchAll($db, $table){
-        try{
-            $query = $db->query('SHOW TABLES LIKE "' . $table . '"');   // Have we got connection to db
-            $query = $db->query('SELECT * FROM ' . $table);
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);     // Try query. Fails if table not exist
+    function insertList($db){
+        $lists = json_decode($_POST["customerLists"], true);    // true for associative array, not stdObject
+        foreach ($lists as $listName => $list) {
+            // var_dump($list);
+            // echo('<br>');
+            processList($db, $listName, $list);
         }
-        catch(PDOException $e){
-            // echo "RESULT of SHOW TABLES LIKE $table<br>";
-            // var_dump($query);
-            echo "Error while fetching data. DEALING with it";
-            prepareDatabase($db);
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);     // Retry query. Fails if table not exist
+
+        // print_r($out);
+
+        // $out = json_decode($_POST["customerLists"]);
+        // echo $_POST['customerLists'];
+    };
+
+    function processList($db, $listName, $list){
+        $query = $db->prepare('INSERT INTO customerLists VALUES(:customerId, :list, :prodId, :quantity)');
+        echo "<br>processing list $listName <br>";
+        foreach ($list as $product) {   // still { product: order}
+            // var_dump($product['product']);
+            echo $product['product']['prodName'];
+            echo $product['quantity'];
+            
+            $array = array(
+                'customerId' => 0,
+                'list'       => $listName,
+                'prodId'     => $product['product']['prodId'],
+                'quantity'   => $product['quantity']
+            );
+     
+            $result = $query->execute($array);
+            echo json_encode($result);
         }
-        // print_r($result);
-        echo json_encode($result);
     };
 
-    function insertProduct($db){
-        $query = $db->prepare('INSERT INTO product VALUES(:prodId, :prodName, :prodCategory, :prodDescription, :prodPrice, :prodStockLevel, :prodManufacturer, :imageName)');
-        // $imageName = saveImage();   // Filename or False
-        // echo $imageName;
-        // $imageName = $imageName ? $imageName : null;
-        $si = saveImage();
-        // var_dump($si);
-        $array = array(
-            'prodId'           => $_POST["prodId"],
-            'prodName'         => $_POST["prodName"],
-            'prodCategory'     => $_POST["prodCategory"],
-            'prodDescription'  => $_POST["prodDescription"],
-            'prodPrice'        => $_POST["prodPrice"],
-            'prodStockLevel'   => $_POST["prodStockLevel"],
-            'prodManufacturer' => $_POST["prodManufacturer"],
-            'imageName'        => $si 
-            );
+    // function deleteList($db, $prodId)
+    // {
+    //     $query = $db->prepare('DELETE FROM customerLists WHERE prodId = :prodId');
+    //     $array = array('prodId' => $prodId);
  
-        $result = $query->execute($array);
-        echo json_encode($result);
-        // print_r($query);
-    };
+    //     $query->execute($array);
+    // };
 
-    function deleteProduct($db, $prodId)
-    {
-        $query = $db->prepare('DELETE FROM product WHERE prodId = :prodId');
-        $array = array('prodId' => $prodId);
- 
-        $query->execute($array);
-        // print_r($query);
-    };
+    // function editList($db){
+    //     $query = $db->prepare('UPDATE customerLists
+    //                             SET prodName = :prodName,
+    //                                 prodCategory = :prodCategory,
+    //                                 prodDescription = :prodDescription,
+    //                                 prodPrice = :prodPrice,
+    //                                 prodStockLevel = :prodStockLevel,
+    //                                 prodManufacturer = :prodManufacturer
+    //                             WHERE prodId = :prodId');
+    //     $array = array(
+    //         'prodId'           => $_POST["prodId"],
+    //         'prodName'         => $_POST["prodName"],
+    //         'prodCategory'     => $_POST["prodCategory"],
+    //         'prodDescription'  => $_POST["prodDescription"],
+    //         'prodPrice'        => $_POST["prodPrice"],
+    //         'prodStockLevel'   => $_POST["prodStockLevel"],
+    //         'prodManufacturer' => $_POST["prodManufacturer"]
+    //         );
 
-    function editProduct($db){
-        $query = $db->prepare('UPDATE product
-                                SET prodName = :prodName, prodCategory = :prodCategory, prodDescription = :prodDescription, prodPrice = :prodPrice, prodStockLevel = :prodStockLevel, prodManufacturer = :prodManufacturer
-                                WHERE prodId = :prodId');
-        $array = array(
-            'prodId'           => $_POST["prodId"],
-            'prodName'         => $_POST["prodName"],
-            'prodCategory'     => $_POST["prodCategory"],
-            'prodDescription'  => $_POST["prodDescription"],
-            'prodPrice'        => $_POST["prodPrice"],
-            'prodStockLevel'   => $_POST["prodStockLevel"],
-            'prodManufacturer' => $_POST["prodManufacturer"]
-            // 'imageName'=> $si 
-            );
-
-        $query->execute($array);
-    }
+    //     $query->execute($array);
+    // }
 ?>
