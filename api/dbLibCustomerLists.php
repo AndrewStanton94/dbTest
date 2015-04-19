@@ -9,25 +9,18 @@
         }
 
         try {
-            foreach ($lists as $listName => $list){ //foreach customerList
-                // var_dump($list);
-                // echo('<br>');
-                echo "<br>processing list $listName <br>";
-                foreach ($list as $product) {   // foreach {product: quantity}
-                    // var_dump($product['product']);
-                    // echo $product['product']['prodName'];
-                    // echo $product['quantity'];
-                    
+            var_dump($list);
+            echo('<br>');
+            foreach ($lists as $listItem){ //foreach list item
                     $array = array(
                         'customerId' => 0,
-                        'list'       => $listName,
-                        'prodId'     => $product['product']['prodId'],
-                        'quantity'   => $product['quantity']
+                        'list'       => $listItem['list'],
+                        'prodId'     => $listItem['prodId'],
+                        'quantity'   => $listItem['quantity']
                     );
              
                     $result = $query->execute($array);
                     // echo json_encode($result);
-                }
             }
         }
         catch (Exception $e) {
