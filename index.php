@@ -1,7 +1,7 @@
 <?php
     $pageTitle = "Home";
     $pathToLib = "lib/";
-    $jsToInclude = ['ajax', 'dnd', 'productPage', 'global'];
+    $jsToInclude = ['json', 'ajax', 'dnd', 'productPage', 'global'];
     include($pathToLib . "preamble.php");
 ?>
 
