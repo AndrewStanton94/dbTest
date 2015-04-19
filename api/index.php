@@ -16,8 +16,8 @@ if(!isset($db)) {
 // header('Content-Type: text/json');
 switch($_SERVER['REQUEST_METHOD']) {
     case "POST":                    // Creation
-        // echo "<strong><code>Post</code></strong>: <br>";
-        // print_r($requestParameters);
+        echo "<strong><code>Post</code></strong>: <br>";
+        print_r($requestParameters);
         switch($requestParameters["path"][0]) {
             case 'product':
                 switch ($requestParameters['path'][1]) {

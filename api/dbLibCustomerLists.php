@@ -1,9 +1,10 @@
 <?php
     function insertList($db){
+        echo "in insertList";
         $query = $db->prepare('INSERT INTO customerLists VALUES(:customerId, :list, :prodId, :quantity)');
-        $lists = json_decode($_POST["customerLists"], true);    // true => associative array, not stdObject
+        $list = $_POST["customerLists"];    // true => associative array, not stdObject
 
-        if (!isset($lists)){
+        if (!isset($list)){
             echo "Nothing in list";
             return;
         }
@@ -11,7 +12,7 @@
         try {
             var_dump($list);
             echo('<br>');
-            foreach ($lists as $listItem){ //foreach list item
+            foreach ($list as $listItem){ //foreach list item
                     $array = array(
                         'customerId' => 0,
                         'list'       => $listItem['list'],
