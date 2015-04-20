@@ -1,6 +1,5 @@
 <?php
     function insertList($db){
-        $query = $db->prepare('INSERT INTO customerLists VALUES(:customerId, :list, :prodId, :quantity)');
         $list = $_POST["customerLists"];    // true => associative array, not stdObject
         $list = json_decode($list, true);
 
@@ -10,8 +9,17 @@
         }
 
         foreach ($list as $listItem){ //foreach list item
+            addItem($db, $listItem);
+        }
+    };
+
+    function addItem($db, $listItem){
+            $query = $db->prepare('INSERT INTO customerLists VALUES(:customerId, :list, :prodId, :quantity)');
+                        // echo "<br><br>list " . $listItem['list'];
+                        // echo "<br>prodId " . $listItem['prodId'];
+                        // echo "<br>qty " . $listItem['quantity'];
             try {
-                print_r($listItem);
+                // print_r($listItem);
                     $array = array(
                         'customerId' => 0,
                         'list'       => $listItem['list'],
@@ -20,10 +28,11 @@
                     );
 
                     $result = $query->execute($array);
+                    echo "Added new product";
                     // echo json_encode($result);
             }
             catch (Exception $e) {
-                echo $e;
+                // echo $e;
                 // $errorcode = $db->errorInfo()[1];
                 // switch ($errorcode) {
                     // case 1062:
@@ -31,7 +40,9 @@
                          $query = $db->prepare('UPDATE customerLists
                                 SET quantity = :quantity
                                 WHERE prodId = :prodId AND list = :list AND customerId = :customerId');
-                        echo $query->execute($array);
+                        // echo $query->execute($array);
+                        $query->execute($array);
+                        echo "updated existing";
                     // break;
 
                 // default:
@@ -40,7 +51,6 @@
                 // } 
             }
         }
-    };
 
     function deleteList($db, $prodId){
         if ($prodId == '*'){

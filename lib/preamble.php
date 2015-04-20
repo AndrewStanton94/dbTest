@@ -15,8 +15,8 @@
 <header>
 <nav>
     <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Basket</a></li>
+        <li><a href="<?php echo "$pathToRoot"; ?>">Home</a></li>
+        <li><a href="<?php echo "$pathToRoot/checkout.php"; ?>">Checkout</a></li>
 <!--         <li><a href="#"></a></li>
         <li><a href="#"></a></li>
  -->    </ul>
