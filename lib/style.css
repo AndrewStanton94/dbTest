@@ -9,12 +9,12 @@ body{
 
 nav ul{
     background-color: #E84924;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 nav li{
     display: inline-block;
-    margin: 1em;
+    margin: 0 1em;
     padding: 1em;
     font-size: large;
     background-color: #FFB674;
@@ -46,6 +46,13 @@ input[readonly = "readonly"]{
     display: none;
 }
 
+button#buy {
+    display: block;
+    width: 20em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 article section {
     display: inline-block;
     vertical-align: top;
@@ -69,6 +76,10 @@ section#customerLists{
     width: 39%;
     background-color: #C724E8;
     min-height: 5em;
+}
+
+section#address{
+    display: none;
 }
 
 #customerLists img{
