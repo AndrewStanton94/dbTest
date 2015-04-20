@@ -1,15 +1,39 @@
 * {
-    /*background-color: #f00;*/
     margin: 0;
     font-family: sans-serif;
 }
 
+body{
+    background-color: #ccc;
+}
+
+nav ul{
+    background-color: #E84924;
+    width: 100%;
+}
+
+nav li{
+    display: inline-block;
+    margin: 1em;
+    padding: 1em;
+    font-size: large;
+    background-color: #FFB674;
+}
+
+h1{
+    margin: 1em;
+}
+
 form {
-    /*border-color: #f00;*/
     border: 1px solid #f00;
     margin: 1em;
     padding: 0.5em;
     background-color: #eee;
+}
+
+label {
+    display: block;
+    float: left;
 }
 
 input, select, textarea {
@@ -22,16 +46,9 @@ input[readonly = "readonly"]{
     display: none;
 }
 
-label {
-    display: block;
-    float: left;
-}
-
-section {
+article section {
     display: inline-block;
     vertical-align: top;
-    /*max-width: 30em;*/
-    /*overflow: hidden;*/
 }
 
 section img {
@@ -42,19 +59,19 @@ section#productList{
     display: inline-block;
     vertical-align: top;
     width: 60%;
-    background-color: blue;
+    background-color: #6728FF;
     min-height: 5em;
 }
 
-#customerLists{
+section#customerLists{
     position: fixed;
-    /*float: right;*/
+    display: inline-block;
     width: 39%;
-    background-color: yellow;
+    background-color: #C724E8;
     min-height: 5em;
 }
 
-#customerLists img {
+#customerLists img{
     display: none;
 }
 
@@ -63,9 +80,7 @@ section#productList{
 }
 
 section.product{
-    display: inline-block;
-    vertical-align: top;
-    background-color: red;
+    background-color: #FF769E;
     margin: 1em;
     padding: 0.5em;
 }

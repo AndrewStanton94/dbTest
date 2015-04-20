@@ -1,29 +1,30 @@
 <?php
     $pageTitle = "Home";
-    $pathToLib = "lib/";
+    $pathToRoot = ".";
     $jsToInclude = ['json', 'ajax', 'dnd', 'productPage', 'global'];
-    include($pathToLib . "preamble.php");
+    include($pathToRoot . "/lib/preamble.php");
 ?>
 
-<section id="productList">
-    <section class='product' draggable="true" data-id="42">
-        <h1>Product name</h1>
-        <p>The description</p>
-        <form>
-            <input type="number" name="" value="">
-            <input type="submit" name="" value="test">
-        </form>
+<article>
+    <section id="productList">
+        <section class='product' draggable="true" data-id="42">
+            <h1>Product name</h1>
+            <p>The description</p>
+            <form>
+                <input type="number" name="" value="">
+                <input type="submit" name="" value="test">
+            </form>
+        </section>
     </section>
-</section>
 
-<section id="customerLists">
-<h1>List of stuff</h1>
-</section>
+    <section id="customerLists">
+    <h1>List of stuff</h1>
+    </section>
 
-<div id="callbackDiv">
-    
-</div>
-
+    <div id="callbackDiv">
+        
+    </div>
+</article>
 <?php
-    include($pathToLib . "footer.php");
+    include($pathToRoot . "/lib/footer.php");
 ?>

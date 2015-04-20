@@ -1,31 +1,44 @@
 <?php
     function insertList($db){
-        echo "in insertList";
         $query = $db->prepare('INSERT INTO customerLists VALUES(:customerId, :list, :prodId, :quantity)');
         $list = $_POST["customerLists"];    // true => associative array, not stdObject
+        $list = json_decode($list, true);
 
         if (!isset($list)){
             echo "Nothing in list";
             return;
         }
 
-        try {
-            var_dump($list);
-            echo('<br>');
-            foreach ($list as $listItem){ //foreach list item
+        foreach ($list as $listItem){ //foreach list item
+            try {
+                print_r($listItem);
                     $array = array(
                         'customerId' => 0,
                         'list'       => $listItem['list'],
                         'prodId'     => $listItem['prodId'],
                         'quantity'   => $listItem['quantity']
                     );
-             
+
                     $result = $query->execute($array);
                     // echo json_encode($result);
             }
-        }
-        catch (Exception $e) {
-            echo $e;
+            catch (Exception $e) {
+                echo $e;
+                // $errorcode = $db->errorInfo()[1];
+                // switch ($errorcode) {
+                    // case 1062:
+                        // echo "<p><strong>Already here. Update.</strong></p>";
+                         $query = $db->prepare('UPDATE customerLists
+                                SET quantity = :quantity
+                                WHERE prodId = :prodId AND list = :list AND customerId = :customerId');
+                        echo $query->execute($array);
+                    // break;
+
+                // default:
+                    // echo "Error code: $errorcode ";
+                    // break;
+                // } 
+            }
         }
     };
 
@@ -34,8 +47,12 @@
             $db->query("DELETE FROM customerLists");
         }
         else{
-            $query = $db->prepare('DELETE FROM customerLists WHERE prodId = :prodId');
-            $array = array('prodId' => $prodId);
+            $query = $db->prepare('DELETE FROM customerLists WHERE prodId = :prodId AND list = :list AND customerId = :customerId');
+            $array = array(
+                'customerId' => 0,
+                'list'       => 'basket',
+                'prodId'     => $prodId,
+            ); 
      
             $query->execute($array);
         }
