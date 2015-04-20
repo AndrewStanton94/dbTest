@@ -10,7 +10,7 @@
     </section>
 
     <section id="customerLists">
-    <h1>List of stuff</h1>
+    <h1>Your Basket</h1>
     </section>
 
     <div id="callbackDiv">

@@ -4,10 +4,20 @@
     URLs of type api/data/args converted to array.
     Determine method then data. Call functions in dbLib to process commands
 */
+
 include_once "utils.php";
+$requestParameters = parseArgsList();
+
+// if(!file_exists(__DIR__.'/config.php')) {
+//     // fail("<b>Hold on Sparky!</b> You need to copy the contents of the <code>config_sample.php</code> file into a new <code>config.php</code> file and fill in the database details, or Linora can't store and retrieve your links.");
+//     if ($requestParameters["path"][0] == "setUpConfig") {
+//         echo "make the file";
+//         return;
+//     }
+// }
+
 include_once "dbLib.php";
 include_once "dbLibCustomerLists.php";
-$requestParameters = parseArgsList();
 
 if(!isset($db)) {
     $db = createConnection();

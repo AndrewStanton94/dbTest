@@ -6,7 +6,7 @@
 ?>
 
     <section id="productCreation">
-        <h1 id="productCreationTitle">Product Creation</h1>
+        <h1 id="productCreationTitle" class="expanded">Product Creation</h1>
         <form id="createForm" enctype="multipart/form-data">
                 <label for="prodName">Product Name</label>
                 <input type="text" autofocus required value="fffjdak" name = "prodName" placeholder = "prodName">
@@ -37,7 +37,7 @@
         </div>
 
         <section id="productDeletion">
-        <h1 id="productDeletionTitle">Product Deletion</h1>
+        <h1 id="productDeletionTitle" class="expanded">Product Deletion</h1>
         <form id = "deleteForm">
             <label for="valueToDelete">Select product to delete</label>
             <select id="valueToDelete">
@@ -52,7 +52,7 @@
 
 
         <section id="productModification">
-        <h1 id="productModificationTitle">Product Modification</h1>
+        <h1 id="productModificationTitle" class="expanded">Product Modification</h1>
 
         <form id="selectToEdit">
             <label for="valueToModify">Select product to edit</label>

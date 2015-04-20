@@ -67,26 +67,4 @@
             $query->execute($array);
         }
     };
-
-    // function editList($db){
-    //     $query = $db->prepare('UPDATE customerLists
-    //                             SET prodName = :prodName,
-    //                                 prodCategory = :prodCategory,
-    //                                 prodDescription = :prodDescription,
-    //                                 prodPrice = :prodPrice,
-    //                                 prodStockLevel = :prodStockLevel,
-    //                                 prodManufacturer = :prodManufacturer
-    //                             WHERE prodId = :prodId');
-    //     $array = array(
-    //         'prodId'           => $_POST["prodId"],
-    //         'prodName'         => $_POST["prodName"],
-    //         'prodCategory'     => $_POST["prodCategory"],
-    //         'prodDescription'  => $_POST["prodDescription"],
-    //         'prodPrice'        => $_POST["prodPrice"],
-    //         'prodStockLevel'   => $_POST["prodStockLevel"],
-    //         'prodManufacturer' => $_POST["prodManufacturer"]
-    //         );
-
-    //     $query->execute($array);
-    // }
 ?>

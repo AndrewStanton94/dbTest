@@ -104,3 +104,16 @@ section.product{
 .product input[type="number"]{
     width: 2em;
 }
+
+h1.expanded::before{
+    content: "▼";
+}
+
+h1.folded::before{
+    /*content: "FOLDED";*/
+    content: "▶";
+}
+
+code {
+    font-family: monospace;
+}
