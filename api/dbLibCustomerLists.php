@@ -1,4 +1,7 @@
 <?php
+/*
+    Functions to create, delete and update data in the customerLists table
+*/
     function insertList($db){
         $list = $_POST["customerLists"];    // true => associative array, not stdObject
         $list = json_decode($list, true);

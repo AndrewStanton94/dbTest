@@ -3,22 +3,11 @@
 /*
     Functions for database interactions.
     Using prepared statements wherever possible
+    Generic library. See other lib files for actions on specific tables
 */
 
-/*
-    Config info. const for protection.
-    Move to config file later.
-
-    Add code to to create db and tables if required.
-*/
-
+    include_once 'config.php';
     include_once 'dbInit.php';
-
-    const DBSERVER = "127.0.0.1"; // SQL DB server address
-    const DBNAME = "shop";    // Name of the database to use
-    const DBUSER = "root";  // User with read/write DB permission
-    const DBPW = "";    // Password for DB user
-    const DBINIT = "CREATE TABLE IF NOT EXISTS product(prodId bigint PRIMARY KEY not null auto_increment, prodName VARCHAR(50) not null, prodCategory VARCHAR(50), prodDescription VARCHAR(500), prodPrice FLOAT not null, prodStockLevel INT not null, prodManufacturer VARCHAR(50), imageName VARCHAR(50) ); CREATE TABLE IF NOT EXISTS customerlists (customerId int(11) NOT NULL, list varchar(50) NOT NULL, prodId bigint(20) NOT NULL, quantity int(5) NOT NULL, PRIMARY KEY (customerId, list, prodId) )";
 
     function createConnection(){
         // DatabaseSourceName: URL, DatabaseName, Encoding
@@ -66,54 +55,4 @@
         // print_r($result);
         echo json_encode($result);
     };
-
-    function insertProduct($db){
-        $query = $db->prepare('INSERT INTO product VALUES(:prodId, :prodName, :prodCategory, :prodDescription, :prodPrice, :prodStockLevel, :prodManufacturer, :imageName)');
-        // $imageName = saveImage();   // Filename or False
-        // echo $imageName;
-        // $imageName = $imageName ? $imageName : null;
-        $si = saveImage();
-        // var_dump($si);
-        $array = array(
-            'prodId'           => $_POST["prodId"],
-            'prodName'         => $_POST["prodName"],
-            'prodCategory'     => $_POST["prodCategory"],
-            'prodDescription'  => $_POST["prodDescription"],
-            'prodPrice'        => $_POST["prodPrice"],
-            'prodStockLevel'   => $_POST["prodStockLevel"],
-            'prodManufacturer' => $_POST["prodManufacturer"],
-            'imageName'        => $si 
-            );
- 
-        $result = $query->execute($array);
-        echo json_encode($result);
-        // print_r($query);
-    };
-
-    function deleteProduct($db, $prodId)
-    {
-        $query = $db->prepare('DELETE FROM product WHERE prodId = :prodId');
-        $array = array('prodId' => $prodId);
- 
-        $query->execute($array);
-        // print_r($query);
-    };
-
-    function editProduct($db){
-        $query = $db->prepare('UPDATE product
-                                SET prodName = :prodName, prodCategory = :prodCategory, prodDescription = :prodDescription, prodPrice = :prodPrice, prodStockLevel = :prodStockLevel, prodManufacturer = :prodManufacturer
-                                WHERE prodId = :prodId');
-        $array = array(
-            'prodId'           => $_POST["prodId"],
-            'prodName'         => $_POST["prodName"],
-            'prodCategory'     => $_POST["prodCategory"],
-            'prodDescription'  => $_POST["prodDescription"],
-            'prodPrice'        => $_POST["prodPrice"],
-            'prodStockLevel'   => $_POST["prodStockLevel"],
-            'prodManufacturer' => $_POST["prodManufacturer"]
-            // 'imageName'=> $si 
-            );
-
-        $query->execute($array);
-    }
 ?>

@@ -15,9 +15,11 @@ nav ul{
 nav li{
     display: inline-block;
     margin: 0 1em;
-    padding: 1em;
-    font-size: large;
+    padding: 0.5em;
+    font-size: 2em;
     background-color: #FFB674;
+    font-variant: small-caps;
+    font-weight: 900;
 }
 
 h1{
