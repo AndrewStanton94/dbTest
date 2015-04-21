@@ -13,6 +13,7 @@
 		<li>Copy the code that apears under the form to the clipboard.</li>
 		<li>Go to the server, navigate to the <code>api/</code> directory.</li>
 		<li>Paste the copied values into a new file called <code>config.php</code>. <strong>All lower case.</strong> </li>
+		<li><a href="../api/firstTime.php">Now click here to create the tables</a></li>
 	</ol>
 </p>
 
@@ -30,7 +31,7 @@
     <input type="text" value="" name = "DBUSER" placeholder = "" title="The password of a user with read-write permissions on the database">
 
     <label for="DBINIT">Product Description</label>
-    <textarea type="text" value="CREATE TABLE IF NOT EXISTS product(prodId bigint PRIMARY KEY not null auto_increment, prodName VARCHAR(50) not null, prodCategory VARCHAR(50), prodDescription VARCHAR(500), prodPrice FLOAT not null, prodStockLevel INT not null, prodManufacturer VARCHAR(50), imageName VARCHAR(50) ); CREATE TABLE IF NOT EXISTS customerlists (customerId int(11) NOT NULL, list varchar(50) NOT NULL, prodId bigint(20) NOT NULL, quantity int(5) NOT NULL, PRIMARY KEY (customerId, list, prodId) )" name = "DBINIT">CREATE TABLE IF NOT EXISTS product(prodId bigint PRIMARY KEY not null auto_increment, prodName VARCHAR(50) not null, prodCategory VARCHAR(50), prodDescription VARCHAR(500), prodPrice FLOAT not null, prodStockLevel INT not null, prodManufacturer VARCHAR(50), imageName VARCHAR(50) ); CREATE TABLE IF NOT EXISTS customerlists (customerId int(11) NOT NULL, list varchar(50) NOT NULL, prodId bigint(20) NOT NULL, quantity int(5) NOT NULL, PRIMARY KEY (customerId, list, prodId) )</textarea>
+    <textarea type="text" name = "DBINIT">CREATE TABLE IF NOT EXISTS product(prodId bigint PRIMARY KEY not null auto_increment, prodName VARCHAR(50) not null, prodCategory VARCHAR(50), prodDescription VARCHAR(500), prodPrice FLOAT not null, prodStockLevel INT not null, prodManufacturer VARCHAR(50), imageName VARCHAR(50) ); CREATE TABLE IF NOT EXISTS customerlists (customerId int(11) NOT NULL, list varchar(50) NOT NULL, prodId bigint(20) NOT NULL, quantity int(5) NOT NULL, PRIMARY KEY (customerId, list, prodId) ); CREATE TABLE IF NOT EXISTS `order` ( `name` varchar(50) NOT NULL, `houseNum` varchar(50) NOT NULL, `city` varchar(50) NOT NULL, `postcode` varchar(10) NOT NULL, `phone` varchar(10) NOT NULL, `email` varchar(50) NOT NULL, `prodId` bigint(20) NOT NULL, `quantity` int(4) NOT NULL, PRIMARY KEY (`name`,`houseNum`,`prodId`,`quantity`) )</textarea>
 
     <input type="submit" value="Create config">
 </form>

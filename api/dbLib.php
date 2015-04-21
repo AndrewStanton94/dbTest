@@ -16,7 +16,8 @@
         $options = array(
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_EMULATE_PREPARES => false, // LAZY FIX see http://stackoverflow.com/questions/134099/are-pdo-prepared-statements-sufficient-to-prevent-sql-injection/12202218#12202218 
-            PDO::ATTR_PERSISTENT => true    // Investigate ramifications
+            PDO::ATTR_PERSISTENT => true,    // Investigate ramifications
+            PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true 
         );      // => MEANS . Access object attr
                 // :: MEANS   Scope modification
 

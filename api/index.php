@@ -5,12 +5,15 @@
     Determine method then data. Call functions in dbLib* to process commands
 */
 
+include_once "dbInit.php";
 include_once "utils.php";
 $requestParameters = parseArgsList();
 
 include_once "dbLib.php";               // Create connection, multi table
 include_once "dbLibProducts.php";       // For the product table
 include_once "dbLibCustomerLists.php";  // For the customerLists table
+include_once "dbLibOrder.php";          // For the order table
+include_once 'dbLibAdmin.php';
 
 if(!isset($db)) {
     $db = createConnection();
@@ -31,14 +34,14 @@ switch($_SERVER['REQUEST_METHOD']) {
                     default:
                         insertProduct($db);
                         return;
-                // echo "May have saved the data index.php @ post/product";
                 }
             case 'customerList':
                 insertList($db);
                 break;
 
             case 'order':
-                break
+                placeOrder($db);
+                break;
 
             default:
                 echo "This data cannot be posted. Was given uri: ";
@@ -59,17 +62,28 @@ switch($_SERVER['REQUEST_METHOD']) {
                 fetchAll($db, "customerLists");
                 break;
 
+            case 'admin':
+                switch($requestParameters["path"][1]) {
+                    case 'count':
+                        orderedProducts($db);
+                        return;
+                    
+                    case 'income':
+                        incomeProducts($db);
+                        return;
+
+                    default:
+                        # code...
+                        return;
+                }
+                break;
+
             default:
                 echo "This data cannot be fetched. Was given uri: ";
                var_dump($_SERVER['REQUEST_URI']); 
                 // Responder with negative feedback
                 break; 
         }
-        break;
-
-    case "PUT":                     // Update
-        // echo "<strong><code>Put</code></strong>: <br>";
-        print_r($requestParameters);
         break;
 
     case "DELETE":

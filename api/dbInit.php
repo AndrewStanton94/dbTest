@@ -34,6 +34,4 @@
         $results["rows"] = $rows;
         var_dump($results);
     }
-
-    // prepareDatabase();
 ?>

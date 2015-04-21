@@ -9,16 +9,17 @@
         <h1 id="productCreationTitle" class="expanded">Product Creation</h1>
         <form id="createForm" enctype="multipart/form-data">
                 <label for="prodName">Product Name</label>
-                <input type="text" autofocus required value="fffjdak" name = "prodName" placeholder = "prodName">
+                <input type="text" autofocus required name = "prodName" placeholder = "prodName">
 
                 <label for="productDescription">Product Description</label>
-                <textarea type="text" required value="fffjdak" name = "prodDescription" placeholder = "prodDescription"></textarea>
+                <textarea type="text" required name = "prodDescription" placeholder = "prodDescription"></textarea>
 
                 <label for="prodPrice">Product Price</label>
-                <input type="number" required value="fffjdak" name = "prodPrice" placeholder = "prodPrice" min=1>
+                <input type="number" required name = "prodPrice" placeholder = "prodPrice" min=1 step="any">
+                <!-- Step=any to permit fractions -->
 
                 <label for="prodStockLevel">Current Stock Level</label>
-                <input type="number" required value="fffjdak" name = "prodStockLevel" placeholder = "prodStockLevel" step=1 min=0>
+                <input type="number" required name = "prodStockLevel" placeholder = "prodStockLevel" step=1 min=0>
 
             <label for="prodCategory">Product Category</label>
             <input type="text" value="fffjdak" name = "prodCategory" placeholder = "prodCategory">
@@ -70,7 +71,7 @@
                 <textarea type="text" required name = "prodDescription"></textarea>
 
                 <label for="prodPrice">Product Price</label>
-                <input type="number" required name = "prodPrice" min=1>
+                <input type="number" required name = "prodPrice" min=1 step="any">
 
                 <label for="prodStockLevel">Current Stock Level</label>
                 <input type="number" required name = "prodStockLevel" step=1 min=0>
@@ -80,9 +81,6 @@
 
             <label for="productManufacturer">Product Manufacturer</label>
             <input type="text" name = "prodManufacturer">
-
-            <label for="productImage">Product Image</label>
-            <input type="file" name="productImage" />
 
             <input type="submit" name="Add to database">
         </form>

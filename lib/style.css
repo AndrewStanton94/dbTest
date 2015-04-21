@@ -88,10 +88,6 @@ section#address{
     display: none;
 }
 
-#productList p#quantity{
-    display: none;
-}
-
 section.product{
     background-color: #FF769E;
     margin: 1em;
@@ -118,4 +114,8 @@ h1.folded::before{
 
 code {
     font-family: monospace;
+}
+
+pre{
+  word-wrap: break-word;
 }

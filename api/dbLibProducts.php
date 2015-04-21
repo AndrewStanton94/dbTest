@@ -21,12 +21,18 @@
         echo json_encode($result);
     };
 
-    function deleteProduct($db, $prodId)
-    {
+    function deleteProduct($db, $prodId){
         $query = $db->prepare('DELETE FROM product WHERE prodId = :prodId');
         $array = array('prodId' => $prodId);
  
         $query->execute($array);
+    };
+
+    function getProductById($db, $prodId){
+        $query = $db->query("SELECT * FROM product WHERE prodId = $prodId");
+ 
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result;
     };
 
     function editProduct($db){

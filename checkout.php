@@ -14,17 +14,17 @@
         <h1>The address</h1>
         <form id="addressForm">
             <label for="name">Name</label>
-            <input type="text" id="name" required>
+            <input type="text" name="name" required>
             <label for="houseNum">House number and street</label>
-            <input type="text" id="houseNum" required>
+            <input type="text" name="houseNum" required>
             <label for="city"> Town / city </label>
-            <input type="text" id="city" required>
+            <input type="text" name="city" required>
             <label for="postcode">Postcode</label>
-            <input type="text" id="postcode" required pattern="^([A-PR-UWYZa-pr-uwyz0-9][A-HK-Ya-hk-y0-9][AEHMNPRTVXYaehmnprtvxy0-9]?[ABEHMNPRVWXYabehmnprvwxy0-9]? {1,2}[0-9][ABD-HJLN-UW-Zabd-hjln-uw-z]{2})$">
+            <input type="text" name="postcode" required pattern="^([A-PR-UWYZa-pr-uwyz0-9][A-HK-Ya-hk-y0-9][AEHMNPRTVXYaehmnprtvxy0-9]?[ABEHMNPRVWXYabehmnprvwxy0-9]? {1,2}[0-9][ABD-HJLN-UW-Zabd-hjln-uw-z]{2})$">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone">
+            <input type="tel" name="phone">
             <label for="email">Email</label>
-            <input type="email" id="email">
+            <input type="email" name="email">
         </form>
     </section>
 
