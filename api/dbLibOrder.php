@@ -1,7 +1,5 @@
 <?php 
 	function placeOrder($db){
-		// echo "I found the right function";
-		// echo $_POST["name"];
 		$order = json_decode($_POST["order"], true);
 		$returnData = [];
 		$db -> beginTransaction();
@@ -10,11 +8,9 @@
 			$p = getProductById($db, $orderedItem["prodId"]);
 
 			if ($orderedItem["quantity"] <= $p['prodStockLevel']){
-				// echo "Can supply " . $p['prodName'];
 				addProductToOrder($db, $orderedItem);
 			}
 			else {
-				// echo "Can't supply " . $p['prodName'];
 				$feedback = [];
 				$feedback[] = false;
 				$feedback[] = $orderedItem;
@@ -22,17 +18,6 @@
 				$returnData[] = $feedback;
 				$db -> rollBack();
 			}
-
-			// print_r($p);
-			// echo gettype($orderedItem["quantity"]);
-			// echo gettype($p['prodStockLevel']);
-			// if ($orderedItem["quantity"] <= $p['prodStockLevel']){
-			// 	echo "Can supply $p['prodName']";
-			// }
-			// else {
-			// 	echo "Can't supply $p['prodName']";
-			// }
-			// echo ($orderedItem["quantity"] <= $p['prodStockLevel']);
 		}
 
 		if ($returnData == []) {
@@ -57,5 +42,4 @@
 
         $result = $query->execute($array);
 	}
-
 ?>

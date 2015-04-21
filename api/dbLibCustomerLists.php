@@ -35,23 +35,9 @@
                     // echo json_encode($result);
             }
             catch (Exception $e) {
-                // echo $e;
-                // $errorcode = $db->errorInfo()[1];
-                // switch ($errorcode) {
-                    // case 1062:
-                        // echo "<p><strong>Already here. Update.</strong></p>";
-                         $query = $db->prepare('UPDATE customerLists
-                                SET quantity = :quantity
-                                WHERE prodId = :prodId AND list = :list AND customerId = :customerId');
-                        // echo $query->execute($array);
-                        $query->execute($array);
-                        echo "updated existing";
-                    // break;
-
-                // default:
-                    // echo "Error code: $errorcode ";
-                    // break;
-                // } 
+                 $query = $db->prepare('UPDATE customerLists SET quantity = :quantity WHERE prodId = :prodId AND list = :list AND customerId = :customerId');
+                $query->execute($array);
+                echo "updated existing";
             }
         }
 

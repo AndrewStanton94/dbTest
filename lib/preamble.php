@@ -17,9 +17,7 @@
     <ul>
         <li><a href="<?php echo "$pathToRoot"; ?>">Home</a></li>
         <li><a href="<?php echo "$pathToRoot/checkout.php"; ?>">Checkout</a></li>
-<!--         <li><a href="#"></a></li>
-        <li><a href="#"></a></li>
- -->    </ul>
+    </ul>
 </nav>
 </header>
 
