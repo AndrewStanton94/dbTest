@@ -1,4 +1,9 @@
 <?php
+
+/*
+    Dumping ground for misc php functions, will relocate when appropriate trends appear.
+*/
+
     function parseArgsList(){
         // Get path and arguments of the URL of the latest request
 
@@ -20,6 +25,7 @@
     function queryToAArray($query){
         // URL query given as single string, convert to associative array
         
+        // var_dump($query);
         if($query == ""){
             return;
         }
@@ -42,6 +48,7 @@
 
             if(in_array($file_ext, array('jpeg','jpg','png'))){
                 if($_FILES['productImage']['size'] < 2097152){
+                    // echo "Trying to rename: utils.php @ saveImage";
                     move_uploaded_file($file_tmp, "../images/".$file_name);
                     return $file_name;
                 }

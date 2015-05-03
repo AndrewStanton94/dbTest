@@ -1,5 +1,9 @@
 <?php
     function prepareDatabase($db){
+        // $db = createConnection();
+        // echo "<br>database";
+        // var_dump($db);
+        // echo "<br>";
         $errorcode = $db->errorInfo()[1];
         $results = [];
         switch ($errorcode) {

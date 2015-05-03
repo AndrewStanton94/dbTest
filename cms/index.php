@@ -42,6 +42,10 @@
         <form id = "deleteForm">
             <label for="valueToDelete">Select product to delete</label>
             <select id="valueToDelete">
+    <!--             <option value="1" data-id=0>A skill</option>
+                <option value="2" data-id=1>Another skill</option>
+                <option value="3" data-id=2>Yet another skill</option>
+     -->
             </select>
             <input type="submit" name="Delete from database">
         </form>

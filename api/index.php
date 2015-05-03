@@ -19,8 +19,11 @@ if(!isset($db)) {
     $db = createConnection();
 }
 
+// header('Content-Type: text/json');
 switch($_SERVER['REQUEST_METHOD']) {
     case "POST":                    // Creation
+        // echo "<strong><code>Post</code></strong>: <br>";
+        // print_r($requestParameters);
         switch($requestParameters["path"][0]) {
             case 'product':
                 switch ($requestParameters['path'][1]) {
@@ -42,12 +45,14 @@ switch($_SERVER['REQUEST_METHOD']) {
 
             default:
                 echo "This data cannot be posted. Was given uri: ";
-                var_dump($_SERVER['REQUEST_URI']); 
+               var_dump($_SERVER['REQUEST_URI']); 
+                // Responder with negative feedback
                 break;
         }
         break;
 
     case "GET":
+        // echo "<strong><code>Get</code></strong>: <br>";
         switch($requestParameters["path"][0]) {
             case 'product':
                 fetchAll($db, "product");
@@ -68,6 +73,7 @@ switch($_SERVER['REQUEST_METHOD']) {
                         return;
 
                     default:
+                        # code...
                         return;
                 }
                 break;
@@ -75,11 +81,13 @@ switch($_SERVER['REQUEST_METHOD']) {
             default:
                 echo "This data cannot be fetched. Was given uri: ";
                var_dump($_SERVER['REQUEST_URI']); 
+                // Responder with negative feedback
                 break; 
         }
         break;
 
     case "DELETE":
+        // echo "<strong><code>Delete</code></strong>: <br>";
         switch($requestParameters["path"][0]) {
             case 'product':
                 if (count($requestParameters["path"]) == 2){
@@ -95,6 +103,7 @@ switch($_SERVER['REQUEST_METHOD']) {
             
             default:
                 echo "This data cannot be deleted";
+                // Responder with negative feedback
                 http_response_code(400);     //'Bad Request', 
                 break;
         }
