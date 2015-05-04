@@ -22,15 +22,15 @@
                 <input type="number" required name = "prodStockLevel" placeholder = "prodStockLevel" step=1 min=0>
 
             <label for="prodCategory">Product Category</label>
-            <input type="text" value="fffjdak" name = "prodCategory" placeholder = "prodCategory">
+            <input type="text" value="" name = "prodCategory" placeholder = "prodCategory">
 
             <label for="productManufacturer">Product Manufacturer</label>
-            <input type="text" value="fffjdak" name = "prodManufacturer" placeholder = "prodManufacturer">
+            <input type="text" value="" name = "prodManufacturer" placeholder = "prodManufacturer">
 
             <label for="productImage">Product Image</label>
             <input type="file" name="productImage" />
 
-            <input type="submit" name="Add to database">
+            <input type="submit" name="Add to database" value="Add product to database">
         </form>
         </section>
 
@@ -42,12 +42,8 @@
         <form id = "deleteForm">
             <label for="valueToDelete">Select product to delete</label>
             <select id="valueToDelete">
-    <!--             <option value="1" data-id=0>A skill</option>
-                <option value="2" data-id=1>Another skill</option>
-                <option value="3" data-id=2>Yet another skill</option>
-     -->
             </select>
-            <input type="submit" name="Delete from database">
+            <input type="submit" name="Delete from database" value="Delete product from database">
         </form>
         </section>
 
@@ -58,7 +54,7 @@
         <form id="selectToEdit">
             <label for="valueToModify">Select product to edit</label>
             <select id="valueToModify"> </select>
-            <input id="selectProdToMod" type="submit" name="Choose for modification">
+            <input id="selectProdToMod" type="submit" name="Choose for modification" value="Edit this product">
         </form>
 
         <form id="modifyForm" enctype="multipart/form-data">
@@ -82,7 +78,7 @@
             <label for="productManufacturer">Product Manufacturer</label>
             <input type="text" name = "prodManufacturer">
 
-            <input type="submit" name="Add to database">
+            <input type="submit" name="Add to database" value="Save changes">
         </form>
     </section>
 
