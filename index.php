@@ -7,6 +7,7 @@
 
 <article>
     <section id="productList">
+    <h1>Products for sale</h1>
     </section>
 
     <section id="customerLists">
