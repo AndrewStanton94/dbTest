@@ -35,6 +35,16 @@
         return $result;
     };
 
+    function searchProducts($db, $searchString){
+        // echo "in search";
+        $query = $db->query('SELECT prodName FROM product WHERE prodName LIKE "%' . $searchString . '%"');
+ 
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+        // echo "Tge resuts";
+        // var_dump($result);
+    };
+
     function editProduct($db){
         $query = $db->prepare('UPDATE product
                                 SET prodName = :prodName, prodCategory = :prodCategory, prodDescription = :prodDescription, prodPrice = :prodPrice, prodStockLevel = :prodStockLevel, prodManufacturer = :prodManufacturer

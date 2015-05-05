@@ -55,7 +55,12 @@ switch($_SERVER['REQUEST_METHOD']) {
         // echo "<strong><code>Get</code></strong>: <br>";
         switch($requestParameters["path"][0]) {
             case 'product':
-                fetchAll($db, "product");
+                if (isset($requestParameters["path"][1])){
+                    searchProducts($db, $requestParameters["path"][1]);
+                }
+                else{
+                    fetchAll($db, "product");
+                }
                 break;
 
             case 'customerList':
@@ -80,7 +85,7 @@ switch($_SERVER['REQUEST_METHOD']) {
 
             default:
                 echo "This data cannot be fetched. Was given uri: ";
-               var_dump($_SERVER['REQUEST_URI']); 
+                var_dump($_SERVER['REQUEST_URI']); 
                 // Responder with negative feedback
                 break; 
         }
