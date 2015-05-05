@@ -37,7 +37,7 @@
 
     function searchProducts($db, $searchString){
         // echo "in search";
-        $query = $db->query('SELECT prodName FROM product WHERE prodName LIKE "%' . $searchString . '%"');
+        $query = $db->query('SELECT * FROM product WHERE prodName LIKE "%' . $searchString . '%"');
  
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result);
