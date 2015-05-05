@@ -6,7 +6,7 @@
 ?>
 
 <article>
-    <input type="search" name="productSearch" id="productSearch" value="" placeholder="">
+    <input type="search" name="productSearch" id="productSearch" value="Product Search" placeholder="">
 
     <section id="productList">
     <h1>Products for sale</h1>

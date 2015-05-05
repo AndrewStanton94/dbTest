@@ -23,7 +23,8 @@ nav li{
 }
 
 h1{
-    margin: 1em;
+    margin: 1em 1em 0.25em 0.5em;
+    font-size: xx-large;
 }
 
 form {
@@ -108,7 +109,6 @@ h1.expanded::before{
 }
 
 h1.folded::before{
-    /*content: "FOLDED";*/
     content: "▶";
 }
 
@@ -118,4 +118,9 @@ code {
 
 pre{
   word-wrap: break-word;
+}
+
+input#productSearch {
+    font-size: xx-large;
+    margin-left: 2em;
 }
