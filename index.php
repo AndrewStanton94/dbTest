@@ -6,7 +6,7 @@
 ?>
 
 <article>
-    <input type="search" name="productSearch" id="productSearch" value="Product Search" placeholder="">
+    <input type="search" name="productSearch" id="productSearch" value="" placeholder="Product Search">
 
     <section id="productList">
     <h1>Products for sale</h1>
@@ -16,9 +16,6 @@
     <h1>Your Basket</h1>
     </section>
 
-    <div id="callbackDiv">
-        
-    </div>
 </article>
 <?php
     include($pathToRoot . "/lib/footer.php");

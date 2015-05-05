@@ -28,9 +28,6 @@
         </form>
     </section>
 
-    <div id="callbackDiv">
-        
-    </div>
     <button id="buy"><h1>Go to Details</h1></button>
 </article>
 <?php
