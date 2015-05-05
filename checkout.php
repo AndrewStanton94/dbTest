@@ -20,7 +20,7 @@
             <label for="city"> Town / city </label>
             <input type="text" name="city" required>
             <label for="postcode">Postcode</label>
-            <input type="text" name="postcode" required pattern="^([A-PR-UWYZa-pr-uwyz0-9][A-HK-Ya-hk-y0-9][AEHMNPRTVXYaehmnprtvxy0-9]?[ABEHMNPRVWXYabehmnprvwxy0-9]? {1,2}[0-9][ABD-HJLN-UW-Zabd-hjln-uw-z]{2})$">
+            <input type="text" name="postcode" id="postcode" required pattern="^([A-PR-UWYZa-pr-uwyz0-9][A-HK-Ya-hk-y0-9][AEHMNPRTVXYaehmnprtvxy0-9]?[ABEHMNPRVWXYabehmnprvwxy0-9]? {1,2}[0-9][ABD-HJLN-UW-Zabd-hjln-uw-z]{2})$">
             <label for="phone">Phone</label>
             <input type="tel" name="phone">
             <label for="email">Email</label>
