@@ -1,6 +1,5 @@
 <?php 
 	function placeOrder($db){
-		// echo "I found the right function";
 		// echo $_POST["name"];
 		$order = json_decode($_POST["order"], true);
 		$returnData = [];
